@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Landmark</title>
+</head>
+<body>
+
+<div th:each="landmark : ${landmark}">
+    <a th:href="@{/landmark/{id}(id=${landmark.getId()})}"
+       th:text="${'Достопримечательность: ' + landmark.getName() + ', Дата создания: ' + landmark.getCalendarDate()+ ', Описание: ' + landmark.getDescription()+ ', Тип: ' + landmark.getType()}">user</a>
+</div>
+
+<br/>
+<hr/>
+
+<a href="/landmark/new">Create new landmark</a>
+
+</body>
+</html>

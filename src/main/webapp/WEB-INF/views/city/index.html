@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>City</title>
+</head>
+<body>
+
+<div th:each="city : ${city}">
+    <a th:href="@{/city/{id}(id=${city.getId()})}"
+       th:text="${'Город: ' + city.getName() + ', Численность населения: ' + city.getPopulation()+ ', Наличие метро: ' + city.isMetro()}">user</a>
+</div>
+
+<br/>
+<hr/>
+
+<a href="/city/new">Create new city</a>
+
+</body>
+</html>

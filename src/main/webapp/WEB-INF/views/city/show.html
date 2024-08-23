@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<p th:text="${city.getName()}">VALUE</p>
+<p th:text="${'Численность населения: ' + city.population()}">VALUE</p>
+<p th:text="${'Наличие метро: ' + city.isMetro()}">VALUE</p>
+<p th:text="${city.getId()}">VALUE</p>
+
+<a th:href="@{/city/{id}/edit(id=${city.getId()})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/city/{id}(id=${city.getId()})}">
+  <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>

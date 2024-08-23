@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <preConditions>
+        <dbms type="postgresql"/>
+    </preConditions>
+
+    <changeSet id="0" author="viktoria">
+        <tagDatabase tag="db_init"/>
+    </changeSet>
+
+    <include file="v.1.0.0/changelog-v1.xml" relativeToChangelogFile="true"/>
+
+    <changeSet id="1" author="viktoria">
+        <tagDatabase tag="v.1.0"/>
+    </changeSet>
+
+</databaseChangeLog>
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<databaseChangeLog-->
+<!--xmlns="http://www.liquibase.org/xml/ns/dbchangelog"-->
+<!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">-->
+
+<!--<changeSet id="create-table-hero" author="uPagge">-->
+<!--    <createTable tableName="hero">-->
+<!--        <column name="id" type="int" autoIncrement="true">-->
+<!--            <constraints nullable="false" primaryKey="true"/>-->
+<!--        </column>-->
+<!--        <column name="book_id" type="int">-->
+<!--            <constraints nullable="false"/>-->
+<!--        </column>-->
+<!--        <column name="name" type="varchar(64)">-->
+<!--            <constraints nullable="false"/>-->
+<!--        </column>-->
+<!--    </createTable>-->
+<!--</changeSet>-->
+
+<!--<changeSet id="create-fk" author="uPagge">-->
+<!--    <addForeignKeyConstraint baseTableName="hero" baseColumnNames="book_id"-->
+<!--                             constraintName="hero_book_id"-->
+<!--                             referencedTableName="book" referencedColumnNames="id"-->
+<!--                             deleteCascade="true"/>-->
+<!--</changeSet>-->
+
+<!--</databaseChangeLog>-->

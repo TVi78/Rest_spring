@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <!-- Define the appenders -->
+    <Appenders>
+        <!-- Console Appender -->
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n}{TRACE=magenta}" charset="866" disableAnsi="false"/>
+        </Console>
+        <!-- File Appender -->
+        <File name="FileAppender" fileName="logs/logs.log" append="false">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <!-- Define the loggers -->
+    <Loggers>
+        <!-- Logger for specific package -->
+        <Logger name="ru.home.webservice2.dao" level="info" additivity="false">
+            <AppenderRef ref="ConsoleAppender" />
+        </Logger>
+        <!-- Root Logger -->
+        <Root level="warn">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+        </Root>
+    </Loggers>
+
+</Configuration>
