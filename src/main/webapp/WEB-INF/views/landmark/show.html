@@ -6,7 +6,7 @@
 </head>
 <body>
 <p th:text="${landmark.getName()}">VALUE</p>
-<p th:text="${'Описание: ' + landmark.description()}">VALUE</p>
+<p th:text="${'Описание: ' + landmark.getDescription()}">VALUE</p>
 <p th:text="${landmark.getId()}">VALUE</p>
 
 <a th:href="@{/landmark/{id}/edit(id=${landmark.getId()})}">Edit</a>

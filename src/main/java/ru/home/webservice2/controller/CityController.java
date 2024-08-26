@@ -1,6 +1,8 @@
 package ru.home.webservice2.controller;
 
 import javax.validation.Valid;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import ru.home.webservice2.dao.CityDAO;
 import ru.home.webservice2.models.City;
 
+/**
+ * URL операции City
+ *
+ * @see City
+ */
+@Slf4j
 @Controller
 @RequestMapping("/city")
 public class CityController {
@@ -68,25 +76,4 @@ public class CityController {
         cityDAO.delete(id);
         return "redirect:/city";
     }
-
-//    @PostMapping
-//    public ResponseEntity<City> create(@RequestBody CityDTO dto) {
-//        return new ResponseEntity<>(cityService.create(dto), HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/cities")
-//    public ResponseEntity<List<City>> readAll() {
-//        return new ResponseEntity<>(cityService.readAll(), HttpStatus.OK);
-//    }
-//
-//    @PutMapping
-//    public ResponseEntity<City> update(@RequestBody City landmark) {
-//        return new ResponseEntity<>(cityService.update(landmark), HttpStatus.OK);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public HttpStatus delete(@PathVariable Integer id) {
-//        cityService.delete(id);
-//        return HttpStatus.OK;
-//    }
 }

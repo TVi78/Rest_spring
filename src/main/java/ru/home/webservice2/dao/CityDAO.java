@@ -1,5 +1,6 @@
 package ru.home.webservice2.dao;
 
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,12 @@ import ru.home.webservice2.models.City;
 
 import java.util.List;
 
+/**
+ * CRUD операции City
+ *
+ * @see City
+ */
+@Slf4j
 @Component
 public class CityDAO {
     private final SessionFactory sessionFactory;
@@ -32,7 +39,6 @@ public class CityDAO {
         return session.get(City.class, id);
     }
 
-
     @Transactional
     public void save(City city) {
         Session session = sessionFactory.getCurrentSession();
@@ -43,7 +49,6 @@ public class CityDAO {
     public void update(int id, City updatedCity) {
         Session session = sessionFactory.getCurrentSession();
         City cityToBeUpdated = session.get(City.class, id);
-
         cityToBeUpdated.setName(updatedCity.getName());
         cityToBeUpdated.setPopulation(updatedCity.getPopulation());
         cityToBeUpdated.setMetro(updatedCity.isMetro());

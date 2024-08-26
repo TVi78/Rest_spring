@@ -6,8 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -24,9 +28,10 @@ public class Landmark {
     @Column(nullable = false)
     private String name;
 
-    @Temporal(TemporalType.DATE)
+    //@Temporal(TemporalType.DATE)
     @Column(name = "data")
-    private java.util.Date calendarDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date date;
 
     @Column
     private String description;
@@ -35,6 +40,12 @@ public class Landmark {
     @Column(name = "type")
     @org.hibernate.annotations.Type(type = "enum_postgressql")
     private Type type;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "landmark_service",
+            joinColumns = { @JoinColumn(name = "landmark_id") },
+            inverseJoinColumns = { @JoinColumn(name = "service_id") })
+    private List<Service> service= new ArrayList<>();
 
 //    @NotEmpty
 //    @ManyToMany(fetch = FetchType.LAZY)

@@ -32,7 +32,7 @@ public class City {
     @Column
     private boolean metro;
 
-    @NotEmpty
+//    @NotEmpty
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "city_landmark",
             joinColumns = { @JoinColumn(name = "city_id") },

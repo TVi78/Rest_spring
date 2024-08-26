@@ -8,7 +8,8 @@
 
 <div th:each="landmark : ${landmark}">
     <a th:href="@{/landmark/{id}(id=${landmark.getId()})}"
-       th:text="${'Достопримечательность: ' + landmark.getName() + ', Дата создания: ' + landmark.getCalendarDate()+ ', Описание: ' + landmark.getDescription()+ ', Тип: ' + landmark.getType()}">user</a>
+       th:text="${'Идентификатор: '+ landmark.getId()+' Достопримечательность: ' + landmark.getName() + ', Дата создания: ' + landmark.getDate()+
+       ', Описание: ' + landmark.getDescription()+ ', Тип: ' + landmark.getType()}">user</a>
 </div>
 
 <br/>

@@ -1,5 +1,6 @@
 package ru.home.webservice2.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,13 @@ import ru.home.webservice2.models.Landmark;
 import javax.validation.Valid;
 import java.util.Map;
 
+/**
+ * URL операции Landmark
+ *
+ * @see Landmark
+ */
+
+@Slf4j
 @Controller
 @RequestMapping("/landmark")
 public class LandmarkController {

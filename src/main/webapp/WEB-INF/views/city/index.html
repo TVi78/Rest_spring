@@ -8,7 +8,7 @@
 
 <div th:each="city : ${city}">
     <a th:href="@{/city/{id}(id=${city.getId()})}"
-       th:text="${'Город: ' + city.getName() + ', Численность населения: ' + city.getPopulation()+ ', Наличие метро: ' + city.isMetro()}">user</a>
+       th:text="${'id: '+ city.getId()+ ', Город: ' + city.getName() + ', Численность населения: ' + city.getPopulation()+ ', Наличие метро: ' + city.isMetro()}">user</a>
 </div>
 
 <br/>

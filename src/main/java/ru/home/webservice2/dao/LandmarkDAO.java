@@ -7,12 +7,17 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import ru.home.webservice2.models.City;
 import ru.home.webservice2.models.Landmark;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+
+/**
+ * CRUD операции Landmark
+ *
+ * @see Landmark
+ */
 
 @Slf4j
 @Component
@@ -27,8 +32,6 @@ public class LandmarkDAO {
     @Transactional(readOnly = true)
     public List<Landmark> index() {
         log.info("get all landmarks");
-        log.trace("trace");
-        log.warn("warn");
         Session session = sessionFactory.getCurrentSession();
 
         return session.createQuery("select p from Landmark p", Landmark.class)
@@ -37,6 +40,7 @@ public class LandmarkDAO {
 
     @Transactional(readOnly = true)
     public List<Landmark> sortFiltr(Map<String, String> params) {
+        log.info("get sort-filtr");
         Session session = sessionFactory.getCurrentSession();
         if ((params.get("sort") != null) && (params.get("filtr") == null)) {
             return session.createQuery("select p from Landmark p order by p.name asc", Landmark.class)
@@ -59,12 +63,14 @@ public class LandmarkDAO {
 
     @Transactional(readOnly = true)
     public Landmark show(int id) {
+        log.info("get show");
         Session session = sessionFactory.getCurrentSession();
         return session.get(Landmark.class, id);
     }
 
     @Transactional(readOnly = true)
     public List filtrCity(String city) {
+        log.info("get filtrCity");
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select c.landmark from City c where c.name=:city", Collection.class);
         query.setParameter("city", city);
@@ -75,19 +81,21 @@ public class LandmarkDAO {
     public void save(Landmark landmark) {
         Session session = sessionFactory.getCurrentSession();
         session.save(landmark);
+        log.info("save");
     }
 
     @Transactional
     public void update(int id, Landmark updatedLandmark) {
         Session session = sessionFactory.getCurrentSession();
         Landmark landmarkToBeUpdated = session.get(Landmark.class, id);
-
         landmarkToBeUpdated.setDescription(updatedLandmark.getDescription());
+        log.info("get update");
     }
 
     @Transactional
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
-        session.remove(session.get(City.class, id));
+        session.remove(session.get(Landmark.class, id));
+        log.info("get delete");
     }
 }

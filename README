@@ -1,16 +1,21 @@
 - Добавить достопримечательность 
-http://localhost:8081/landmark/new   post
+http://localhost:8081/landmark/new   метод post
 - Получить все достопримечательности (передать параметр для сортировки по наименованию достопримечательности, параметр для фильтрации по типу достопримечательности) 
-/landmark/sort   get
+/landmark/sort   метожд get
+http://localhost:8081/landmark/sort?sort=sort // сортировка по возрастанию наименования достопримечательности
+http://localhost:8081/landmark/sort?filtr=park // параметр для фильтрации по типу достопримечательности
+http://localhost:8081/landmark/sort?sort=sort&filtr=park // сортировка по возрастанию наименования и фильтрация по типу достопримечательности
 - Получить все достопримечательности конкретного населенного пункта
 /landmark/city/{city}  get
+http://localhost:8081/landmark/city/Moskow
 - Изменение данных по достопримечательности (возможно изменение только поля Краткое описание) 
 /landmark/{id}/edit patch
+http://localhost:8081/landmark/1/edit
 - Удаление достопримечательности из справочника 
 /landmark/{id}  delete
 
 - Добавить город 
 /city/new  post
 - Изменение данных по городу (возможно изменение только полей: Численность населения, наличие метро) 
-/city/{id}  patch
+/city/{id}/edit  patch
 
