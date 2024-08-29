@@ -6,16 +6,68 @@
 </head>
 <body>
 
-<div th:each="landmark : ${landmark}">
-    <a th:href="@{/landmark/{id}(id=${landmark.getId()})}"
-       th:text="${'Идентификатор: '+ landmark.getId()+' Достопримечательность: ' + landmark.getName() + ', Дата создания: ' + landmark.getDate()+
-       ', Описание: ' + landmark.getDescription()+ ', Тип: ' + landmark.getType()}">user</a>
+<!--
+<table>
+    <tr>
+        <th>No</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Population</th>
+    </tr>
+    <tr th:each="landmark, landStat : ${landmarks}">
+        <td th:text="${landStat.count}">1</td>
+        <td th:text="${landmark.name}">John</td>
+        <td th:text="${landmark.description}">Doe</td>
+        <td>
+            <p th:each="address : ${landmark.city}">
+                <span th:text="${address.name}">Street</span>
+                <span th:text="${address.population}">population</span>
+            </p>
+        </td>
+    </tr>
+</table> -->
+
+<!--
+<div th:each="landmark : ${landmarks}">
+    <a th:href="@{/landmark/{id}(id=${landmark.getId()})}">
+        <div
+                th:text="${'Идентификатор: '+ landmark.getId()+' Достопримечательность: ' + landmark.getName() + ', Дата создания: ' + landmark.getDate()+
+       ', Описание: ' + landmark.getDescription()+ ', Тип: ' + landmark.getType()}">landmark</div>
+
+        <div th:each="city : ${landmark.city}">
+        <span th:text="${'Идентификатор: '+ city.getId()+' Достопри: ' + city.getName()}">
+        </span>
+        </div>
+    </a>
 </div>
+-->
+
+<div th:each="landmark : ${landmarks}">
+    <a th:href="@{/landmark/{id}(id=${landmark.getId()})}">
+    <div
+       th:text="${'Достопримечательность: '+ landmark.getId()+ ' , ' + landmark.getName()+ ' , ' + landmark.getDate()+ ' , '
+        + landmark.getDescription()+ ' , ' + landmark.getType()}"></div>
+    <span>Населенные пункты:
+    <span th:each="city : ${landmark.city}">
+        <span th:text="${city.getName()+ ' '}">
+        </span> </span>
+    </span>
+        <span>, Услуги:
+    <span th:each="service : ${landmark.service}">
+        <span th:text="${service.getName()+ ' '}">
+        </span> </span>
+    </span>
+    </a>
+    <p>---------------------------</p>
+</div>
+
+
 
 <br/>
 <hr/>
 
-<a href="/landmark/new">Create new landmark</a>
+<a th:href="@{/landmark/new}">Create new landmark</a>
 
 </body>
 </html>

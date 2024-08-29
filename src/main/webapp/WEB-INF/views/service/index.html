@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Service</title>
+</head>
+<body>
+
+<div th:each="service : ${services}">
+    <a th:href="@{/service/{id}(id=${service.getId()})}">
+    <div th:text="${'id: '+ service.getId()+ ', Услуга: ' + service.getName() + ', Описание: ' + service.getDescription()}"></div>
+    <span>Достопримечательности:
+    <span th:each="landmark : ${service.landmark}">
+        <span th:text="${landmark.getName()+ ' '}">
+        </span> </span>
+    </span>
+    </a>
+    <p>---------------------------</p>
+</div>
+<br/>
+<hr/>
+
+<a th:href="@{/service/new}">Create new service</a>
+
+</body>
+</html>

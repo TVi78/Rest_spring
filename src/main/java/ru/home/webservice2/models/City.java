@@ -32,15 +32,11 @@ public class City {
     @Column
     private boolean metro;
 
-//    @NotEmpty
-    @ManyToMany(fetch = FetchType.LAZY)
+    //    @NotEmpty
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "city_landmark",
-            joinColumns = { @JoinColumn(name = "city_id") },
-            inverseJoinColumns = { @JoinColumn(name = "landmark_id") })
-    private List<Landmark> landmark= new ArrayList<>();
-
-//    @ManyToMany(mappedBy = "Landmark")
-//    Set<String> list =new HashSet<>();
-//    Map<Integer,String> map =new HashMap<>();
+            joinColumns = {@JoinColumn(name = "city_id")},
+            inverseJoinColumns = {@JoinColumn(name = "landmark_id")})
+    private List<Landmark> landmark = new ArrayList<>();
 
 }

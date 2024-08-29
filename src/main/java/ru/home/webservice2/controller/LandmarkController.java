@@ -33,13 +33,13 @@ public class LandmarkController {
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("landmark", landmarkDAO.index());
+        model.addAttribute("landmarks", landmarkDAO.index());
         return "landmark/index";
     }
 
-    @GetMapping( "/sort")
-    public String sortFiltr(@RequestParam Map<String,String> allParams, ModelMap model){
-        model.addAttribute("landmark", landmarkDAO.sortFiltr(allParams));
+    @GetMapping("/sort")
+    public String sortFiltr(@RequestParam Map<String, String> allParams, ModelMap model) {
+        model.addAttribute("landmarks", landmarkDAO.sortFiltr(allParams));
         return "landmark/index";
     }
 
@@ -66,8 +66,8 @@ public class LandmarkController {
 
     @GetMapping("/city/{city}")
     public String filtrCity(Model model, @PathVariable("city") String city) {
-        model.addAttribute("landmark", landmarkDAO.filtrCity(city));
-        return "landmark/showcity";
+        model.addAttribute("landmarks", landmarkDAO.filtrCity(city));
+        return "landmark/index";
     }
 
     @GetMapping("/{id}/edit")
@@ -81,7 +81,6 @@ public class LandmarkController {
                          @PathVariable("id") int id) {
         if (bindingResult.hasErrors())
             return "landmark/edit";
-
         landmarkDAO.update(id, landmark);
         return "redirect:/landmark";
     }

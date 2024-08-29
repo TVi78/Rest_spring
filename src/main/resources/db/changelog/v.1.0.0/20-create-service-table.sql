@@ -8,6 +8,7 @@ GO
 
 INSERT INTO service(name,description) values
     ('Service1', 'description1'),
+    ('Service3', 'description3'),
     ('Service2', 'description2')
 
 GO

@@ -7,6 +7,9 @@ GO
 
 INSERT INTO landmark_service(landmark_id, service_id) values
     (1, 2),
-    (2, 1);
+    (1, 1),
+    (2, 1),
+    (2, 3);
+
 
 GO

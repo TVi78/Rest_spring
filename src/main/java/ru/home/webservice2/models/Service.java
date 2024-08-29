@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,7 +24,9 @@ public class Service {
     @Column
     private String description;
 
-//    @ManyToMany(mappedBy = "Landmark")
-//    private List<Landmark> landmark;
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "landmark_service",
+            joinColumns = { @JoinColumn(name = "service_id") },
+            inverseJoinColumns = { @JoinColumn(name = "landmark_id") })
+    private List<Landmark> landmark= new ArrayList<>();
 }

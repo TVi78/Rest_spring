@@ -77,12 +77,10 @@ public class SpringConfig implements WebMvcConfigurer {
         dataSource.setUrl(env.getRequiredProperty("hibernate.connection.url"));
         dataSource.setUsername(env.getRequiredProperty("hibernate.connection.username"));
         dataSource.setPassword(env.getRequiredProperty("hibernate.connection.password"));
-
 //        dataSource.setDriverClassName("org.postgresql.Driver");
 //        dataSource.setUrl("jdbc:postgresql://localhost:1501/db");
 //        dataSource.setUsername("user");
 //        dataSource.setPassword("user");
-
         return dataSource;
     }
 

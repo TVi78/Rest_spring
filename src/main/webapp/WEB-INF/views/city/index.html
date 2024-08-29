@@ -7,14 +7,20 @@
 <body>
 
 <div th:each="city : ${city}">
-    <a th:href="@{/city/{id}(id=${city.getId()})}"
-       th:text="${'id: '+ city.getId()+ ', Город: ' + city.getName() + ', Численность населения: ' + city.getPopulation()+ ', Наличие метро: ' + city.isMetro()}">user</a>
+    <a th:href="@{/city/{id}(id=${city.getId()})}">
+        <div th:text="${'id: '+ city.getId()+ ', Город: ' + city.getName() + ', Численность населения: ' + city.getPopulation()+ ', Наличие метро: ' + city.isMetro()}"></div>
+<span>Достопримечательности:
+    <span th:each="landmark : ${city.landmark}">
+        <span th:text="${landmark.getName()+ ' '}">
+        </span> </span>
+    </span>
+</a>
+<p>---------------------------</p>
 </div>
-
 <br/>
 <hr/>
 
-<a href="/city/new">Create new city</a>
+<a th:href="@{/city/new}">Create new city</a>
 
 </body>
 </html>

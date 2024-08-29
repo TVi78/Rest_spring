@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<p th:text="${service.getName()}">VALUE</p>
+<p th:text="${'Описание: ' + service.getDescription()}">VALUE</p>
+<p th:text="${service.getId()}">VALUE</p>
+
+<a th:href="@{/service/{id}/edit(id=${service.getId()})}">Edit</a>
+<br/>
+<hr/>
+<form th:method="DELETE" th:action="@{/service/{id}(id=${service.getId()})}">
+  <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>

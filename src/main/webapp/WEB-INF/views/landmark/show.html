@@ -10,7 +10,8 @@
 <p th:text="${landmark.getId()}">VALUE</p>
 
 <a th:href="@{/landmark/{id}/edit(id=${landmark.getId()})}">Edit</a>
-
+<br/>
+<hr/>
 <form th:method="DELETE" th:action="@{/landmark/{id}(id=${landmark.getId()})}">
   <input type="submit" value="Delete"/>
 </form>

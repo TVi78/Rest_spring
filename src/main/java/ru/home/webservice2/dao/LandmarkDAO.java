@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import ru.home.webservice2.models.City;
 import ru.home.webservice2.models.Landmark;
 
 import java.util.Collection;
@@ -33,8 +34,7 @@ public class LandmarkDAO {
     public List<Landmark> index() {
         log.info("get all landmarks");
         Session session = sessionFactory.getCurrentSession();
-
-        return session.createQuery("select p from Landmark p", Landmark.class)
+        return session.createQuery("select l from Landmark l", Landmark.class)
                 .getResultList();
     }
 

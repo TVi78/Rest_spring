@@ -11,7 +11,8 @@
 <p th:text="${city.getId()}">VALUE</p>
 
 <a th:href="@{/city/{id}/edit(id=${city.getId()})}">Edit</a>
-
+<br/>
+<hr/>
 <form th:method="DELETE" th:action="@{/city/{id}(id=${city.getId()})}">
   <input type="submit" value="Delete"/>
 </form>

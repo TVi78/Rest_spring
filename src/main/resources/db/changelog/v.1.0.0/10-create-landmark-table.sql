@@ -21,9 +21,9 @@ CREATE TABLE IF NOT EXISTS landmark (
 GO
 
 INSERT INTO landmark(name,data,description,type) values
-    ('Place2', '2024-01-08', 'description2', 'PALACE'),
     ('Place1','2024-02-08', 'description1', 'MUSEUM'),
-    ('Place3', '2024-01-08', 'description3', 'PALACE');
+    ('Place3', '2024-01-08', 'description3', 'PALACE'),
+    ('Place2', '2024-01-08', 'description2', 'PALACE');
 
 GO
 

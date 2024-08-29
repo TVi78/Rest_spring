@@ -3,15 +3,16 @@ package ru.home.webservice2.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 @Entity
@@ -41,20 +42,21 @@ public class Landmark {
     @org.hibernate.annotations.Type(type = "enum_postgressql")
     private Type type;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany
+    @JoinTable(name = "city_landmark",
+            joinColumns = { @JoinColumn(name = "landmark_id") },
+            inverseJoinColumns = { @JoinColumn(name = "city_id") })
+    private List<City> city = new ArrayList<>();
+
+    @Getter
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "landmark_service",
             joinColumns = { @JoinColumn(name = "landmark_id") },
             inverseJoinColumns = { @JoinColumn(name = "service_id") })
     private List<Service> service= new ArrayList<>();
 
-//    @NotEmpty
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "cityLandmark",
-//            joinColumns = { @JoinColumn(name = "landmark_id") },
-//            inverseJoinColumns = { @JoinColumn(name = "city_id") })
-//    private Set<City> city = new HashSet<>();
-
-//    @ManyToMany(mappedBy = "City")
+    //    @ManyToMany(mappedBy = "City")
 //    private List<City> landmark;
 
 //    @ManyToMany(mappedBy = "Service")

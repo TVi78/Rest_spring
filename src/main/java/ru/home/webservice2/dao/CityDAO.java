@@ -27,14 +27,15 @@ public class CityDAO {
 
     @Transactional(readOnly = true)
     public List<City> index() {
+        log.info("get all citi");
         Session session = sessionFactory.getCurrentSession();
-
         return session.createQuery("select p from City p", City.class)
                 .getResultList();
     }
 
     @Transactional(readOnly = true)
     public City show(int id) {
+        log.info("get city(id)");
         Session session = sessionFactory.getCurrentSession();
         return session.get(City.class, id);
     }
@@ -43,6 +44,7 @@ public class CityDAO {
     public void save(City city) {
         Session session = sessionFactory.getCurrentSession();
         session.save(city);
+        log.info("city save");
     }
 
     @Transactional
@@ -52,11 +54,13 @@ public class CityDAO {
         cityToBeUpdated.setName(updatedCity.getName());
         cityToBeUpdated.setPopulation(updatedCity.getPopulation());
         cityToBeUpdated.setMetro(updatedCity.isMetro());
+        log.info("city update");
     }
 
     @Transactional
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
         session.remove(session.get(City.class, id));
+        log.info("city delete");
     }
 }
